@@ -1,0 +1,21 @@
+{
+  "name": "karma-step-test",
+  "version": "0.0.1",
+  "description": "A test helper for running items step by step",
+  "main": "./build/karma-step-test.js",
+  "scripts": {
+    "build": "node ./build.js",
+    "test": "node test.js",
+    "prepublish": "npm run build"
+  },
+  "author": "Carson Wright",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0"
+  },
+  "dependencies": {
+    "step-test": "^0.1.2"
+  }
+}

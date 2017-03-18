@@ -1,27 +1,30 @@
 (function(window){
   window.__karma__.start = function(){
     var _karma_ = window.__karma__;
-    StepTest.play();
+    
     StepTest.on("finished", function(){
       _karma_.complete();
     });
-    StepTest.trigger("test.finished", function(test){
-      
+
+    StepTest.on("test.finished", function(test){  
       var result = {
         description: test.name,
         id: test.id,
-        log: test.logs,
+        log: [],
+        suite: [],
         skipped: false,
         pending: false,
         success: test.isSuccess(),
         time: new Date().getTime(),
-        executedExpectationsCount: this.assertions.length
-      };
+        executedExpectationsCount: test.assertions.length
+      };  
       _karma_.result(result);
     })
 
     StepTest.on("finished", function(){
       _karma_.complete();
     });
+
+    StepTest.play();
   }
 })(typeof window ? window : global)

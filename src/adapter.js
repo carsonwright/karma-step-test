@@ -1,6 +1,6 @@
 (function(window){
-  window.__karma__.start = function(_karma_){
-    var _karma_ = this.__karma__;
+  window.__karma__.start = function(){
+    var _karma_ = window.__karma__;
     StepTest.play();
     StepTest.on("finished", function(){
       _karma_.complete();

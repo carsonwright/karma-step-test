@@ -19,10 +19,6 @@
       _karma_.result(result);
     })
 
-     .info({
-      total: data.totalSpecsDefined,
-      specs: getAllSpecNames(jasmineEnv.topSuite())
-    })
     StepTest.on("finished", function(){
       _karma_.complete();
     });

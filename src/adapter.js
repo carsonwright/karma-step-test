@@ -15,7 +15,7 @@
         suite: [],
         skipped: false,
         pending: false,
-        success: test.isSuccess(),
+        success: test.isSuccess() ? "SUCCESS" : "FAILED",
         time: new Date().getTime(),
         executedExpectationsCount: test.assertions.length
       };  

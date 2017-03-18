@@ -308,6 +308,8 @@ StepTest.tests = [];
   })(typeof window !== 'undefined' ? window : global);
 }
 
+initStepTest.$inject = ['config.files']
+
 module.exports = {
   'framework:step-test': ['factory', initStepTest]
 }

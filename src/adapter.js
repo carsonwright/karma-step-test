@@ -3,6 +3,7 @@
     var _karma_ = window.__karma__;
     
     StepTest.on("finished", function(){
+      _karma_.info({ total: this.tests.length });
       _karma_.complete();
     });
 

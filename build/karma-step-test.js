@@ -1,5 +1,6 @@
-(function (window) {
-  "use strict";
+var initStepTest = function (files) {
+  (function(window){
+    "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -274,32 +275,39 @@ StepTest.steps = [];
 StepTest.tests = [];
 // = StepTest;
 
-KarmaStepTest = function(_karma){
-  StepTest.on("test.finished", function(test){
-    _karma.result({
-        // test id
-        id: test.id,
-        // test description
-        description: test.name,
-        // an array of string error messages that might explain a failure.
-        // this is required if success is false.
-        log: test.errors,
-        success: test.isSuccess(), // pass / fail
-        skipped: false // skipped / ran
-    })
-  })
-  StepTest.on("finished", function(){
-    _karma.complete()
-  })
-  StepTest.log = function(info){
-    _karma.info(info);
-  }
-  try{
-    StepTest.play()
-  }catch(error){
-    _karma.error(error);
-  }
+
+
+    var KarmaStepTest = function(_karma){
+      StepTest.on("test.finished", function(test){
+        _karma.result({
+            // test id
+            id: test.id,
+            // test description
+            description: test.name,
+            // an array of string error messages that might explain a failure.
+            // this is required if success is false.
+            log: test.errors,
+            success: test.isSuccess(), // pass / fail
+            skipped: false // skipped / ran
+        })
+      })
+      StepTest.on("finished", function(){
+        _karma.complete()
+      })
+      StepTest.log = function(info){
+        _karma.info(info);
+      }
+      try{
+        StepTest.play()
+      }catch(error){
+        _karma.error(error);
+      }
+    }
+
+  window.__karma__.start = KarmaStepTest;
+  })(typeof window !== 'undefined' ? window : global);
 }
 
-  window.__karma__.start = StepTest.play
-})(window)
+module.exports = {
+  'framework:step-test': ['factory', initStepTest]
+}

@@ -1,4 +1,0 @@
-(function (window) {
-  {{content}}
-  window.__karma__.start = StepTest.play
-})(window)
